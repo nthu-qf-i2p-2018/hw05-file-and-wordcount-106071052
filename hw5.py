@@ -22,14 +22,13 @@ def main(filename):
             word = word.split(string.punctuation)
             
             # check if word is not empty
-            if word:
+            if word !=(" "):
                 # append the word to "all_words" list
                 all_words.append(word)
     
     # compute word count from all_words
     from collections import Counter
-    wordcounte = Counter(all_words)
-    wordcounte.most_count()
+    counter = Counter(all_words)
     
     # dump to a csv file named "wordcount.csv":
     # word,count
@@ -39,20 +38,23 @@ def main(filename):
     import csv
     with open('wordcount.csv', 'w') as csv_file:
         # create a csv writer from a file object (or descriptor)
-        writer = csv.writer(csv_file)
+        writer = csv.writer(csv_file,delimiter=',')
         # write table head
         writer.writerow(['word', 'count'])
         # write all (word, count) pair into the csv writer
-        writer.writerows(csv_file)
+        for x in set(all_words):
+            writer.writerow([k, all_words.count(x)])
 
     # dump to a json file named "wordcount.json"
     import json
-    f = open("wordcount.json", 'w')
-    json.dump(all_words, f)
+    with open("wordcount.json", "w") as json_file:
+        json.dump(counter, json_file)
 
     # BONUS: dump to a pickle file named "wordcount.pkl"
     # hint: dump the Counter object directly
-
+    import pickle
+    with open("wordcount.pkl", "wb") as pkl_file:
+        pickle.dump(counter, pkl_file)
 
 if __name__ == '__main__':
     main("i_have_a_dream.txt")
