@@ -56,4 +56,4 @@ def main(filename):
         pickle.dump(counter, pkl_file)
 
 if __name__ == '__main__':
-    main("i_have_a_dream.txt")
+    main(filename)
