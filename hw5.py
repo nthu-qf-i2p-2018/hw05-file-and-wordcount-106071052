@@ -3,7 +3,7 @@ import string
 
 def main(filename):
     # read file into lines
-    lines = open("i_have_a_dream.txt").readlines()
+    lines = open(filename).readlines()
 
     # declare a word list
     all_words = []
@@ -56,4 +56,4 @@ def main(filename):
         pickle.dump(counter, pkl_file)
 
 if __name__ == '__main__':
-    main(filename)
+    main('i_have_a_dream.txt')
