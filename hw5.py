@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-
 from collections import Counter
 import csv
 import json
 import pickle
 import string
+
 
 def main(filename):
     # declare a word list
